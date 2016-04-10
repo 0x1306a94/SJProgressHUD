@@ -5,7 +5,7 @@
 
 
 ####基本用法
-- 除了动画图片API以外的API,都是默认3秒后移除,如需手动移除只需将`autoRemove 参数 传入 false`
+- 除了动画图片API以外的API,都是默认3秒后移除,如果不需要自动移除只需将 `autoRemove 参数传入 false`
 
 ```swift
 @IBAction func loadImage(sender: AnyObject) {
