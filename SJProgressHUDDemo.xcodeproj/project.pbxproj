@@ -429,6 +429,7 @@
 				3C4161501CBA029900AE5468 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

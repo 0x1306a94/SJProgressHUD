@@ -16,6 +16,64 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4e-10-SkY">
+                                <rect key="frame" x="127" y="43" width="120" height="30"/>
+                                <state key="normal" title="显示图片加载动画"/>
+                                <connections>
+                                    <action selector="loadImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yhq-x4-xjV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wbc-ci-K9e">
+                                <rect key="frame" x="128" y="116" width="118" height="30"/>
+                                <state key="normal" title="显示Success样式"/>
+                                <connections>
+                                    <action selector="Success:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f9z-Ha-536"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZa-pC-uD9">
+                                <rect key="frame" x="140" y="159" width="94" height="30"/>
+                                <state key="normal" title="显示Error样式"/>
+                                <connections>
+                                    <action selector="Error:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dd9-jy-YVQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcF-Wf-QTG">
+                                <rect key="frame" x="144" y="207" width="86" height="30"/>
+                                <state key="normal" title="显示Info样式"/>
+                                <connections>
+                                    <action selector="Info:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8lb-X7-gtr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sus-Ig-rsW">
+                                <rect key="frame" x="151" y="250" width="75" height="30"/>
+                                <state key="normal" title="仅显示文字"/>
+                                <connections>
+                                    <action selector="OnlyText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gnq-Yq-tcG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybH-BQ-68k">
+                                <rect key="frame" x="150" y="288" width="75" height="30"/>
+                                <state key="normal" title="状态栏显示"/>
+                                <connections>
+                                    <action selector="statusBar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2CM-0s-WKW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XVg-uk-95h">
+                                <rect key="frame" x="156" y="81" width="60" height="30"/>
+                                <state key="normal" title="显示等待"/>
+                                <connections>
+                                    <action selector="Waiting:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rs7-fF-hop"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afJ-AP-PfB">
+                                <rect key="frame" x="294" y="207" width="52" height="30"/>
+                                <state key="normal" title="dismiss"/>
+                                <connections>
+                                    <action selector="dismiss:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oZW-hU-vdX"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
