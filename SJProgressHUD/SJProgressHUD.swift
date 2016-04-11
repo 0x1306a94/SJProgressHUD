@@ -98,7 +98,6 @@ private func bgColor(alpha: CGFloat) -> UIColor {
 class SJProgressHUD : NSObject {
     
     static var windows = Array<UIWindow!>()
-    static let rv = UIApplication.sharedApplication().keyWindow?.subviews.first as UIView!
     static var angle: Double {
             return [0, 0, 180, 270, 90][UIApplication.sharedApplication().statusBarOrientation.hashValue] as Double
     }
@@ -258,10 +257,11 @@ class SJProgressHUD : NSObject {
          windows.removeAll(keepCapacity: false)
     }
     static func getCenter() -> CGPoint {
+        let view = UIApplication.sharedApplication().keyWindow?.subviews.first as UIView!
         if UIApplication.sharedApplication().statusBarOrientation.hashValue >= 3 {
-            return CGPoint(x: rv.center.y, y: rv.center.x)
+            return CGPoint(x: view.center.y, y: view.center.x)
         } else {
-            return rv.center
+            return view.center
         }
     }
 }
