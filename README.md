@@ -40,5 +40,12 @@
     }
 
 ```
+####CocoaPods安装
+```
+use_frameworks!
+target 'target' do
+pod 'SJProgressHUD'
+end
+```
 
 `目前还有个BUG,横屏时状态栏显示位置不对,不知道咋解决`
