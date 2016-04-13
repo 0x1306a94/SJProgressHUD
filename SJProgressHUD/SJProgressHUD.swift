@@ -8,13 +8,13 @@
 
 import UIKit
 
-enum ShowType {
+public enum ShowType {
     case success
     case error
     case info
 }
 
-extension SJProgressHUD {
+public extension SJProgressHUD {
     
     /**
      加载动画图片
@@ -22,7 +22,7 @@ extension SJProgressHUD {
      - parameter images:       图片数组
      - parameter timeInterval: 动画每次执行时间
      */
-    static func showWaitingWithImages(images : Array<UIImage>, timeInterval : NSTimeInterval = 0) {
+    public static func showWaitingWithImages(images : Array<UIImage>, timeInterval : NSTimeInterval = 0) {
         SJProgressHUD.showWaitWithImages(images, timeInterval: timeInterval)
     }
     /**
@@ -31,7 +31,7 @@ extension SJProgressHUD {
      - parameter text:       需要显示的文字,如果不设置文字,则只显示菊花
      - parameter autoRemove: 是否自动移除,默认3秒后自动移除
      */
-    static func showWaiting(text: String = "", autoRemove: Bool = true) {
+    public static func showWaiting(text: String = "", autoRemove: Bool = true) {
         SJProgressHUD.showWaitingWithText(text, autoRemove: autoRemove)
     }
     /**
@@ -41,7 +41,7 @@ extension SJProgressHUD {
      - parameter color:      背景颜色
      - parameter autoRemove: 是否自动移除,默认3秒后自动移除
      */
-    static func showStatusBarWithText(text: String = "OK", color: UIColor = UIColor(red: 131 / 255.0, green: 178 / 255.0, blue: 158 / 255.0, alpha: 1), autoRemove: Bool = true) {
+    public static func showStatusBarWithText(text: String = "OK", color: UIColor = UIColor(red: 131 / 255.0, green: 178 / 255.0, blue: 158 / 255.0, alpha: 1), autoRemove: Bool = true) {
         SJProgressHUD.showStatusBar(text, color: color, autoRemove: autoRemove)
     }
     /**
@@ -50,7 +50,7 @@ extension SJProgressHUD {
      - parameter text:       需要显示的文字
      - parameter autoRemove: 是否自动移除,默认3秒后自动移除
      */
-    static func showOnlyText(text: String, autoRemove: Bool = true) {
+    public static func showOnlyText(text: String, autoRemove: Bool = true) {
         SJProgressHUD.onlyText(text, autoRemove: autoRemove)
     }
     /**
@@ -59,7 +59,7 @@ extension SJProgressHUD {
      - parameter successText: 需要显示的文字,默认为 Success!
      - parameter autoRemove:  是否自动移除,默认3秒后自动移除
      */
-    static func showSuccess(successText: String = "Success!", autoRemove: Bool = true) {
+    public static func showSuccess(successText: String = "Success!", autoRemove: Bool = true) {
         SJProgressHUD.showText(.success, text: successText, autoRemove: autoRemove)
     }
     /**
@@ -68,7 +68,7 @@ extension SJProgressHUD {
      - parameter errorText:  需要显示的文字,默认为 Error!
      - parameter autoRemove: 是否自动移除,默认3秒后自动移除
      */
-    static func showError(errorText: String = "Error!", autoRemove: Bool = true) {
+    public static func showError(errorText: String = "Error!", autoRemove: Bool = true) {
         SJProgressHUD.showText(.error, text: errorText, autoRemove: autoRemove)
     }
     /**
@@ -77,13 +77,13 @@ extension SJProgressHUD {
      - parameter infoText:   需要显示的文字,默认为 Info!
      - parameter autoRemove: 是否自动移除,默认3秒后自动移除
      */
-    static func showInfo(infoText: String = "info!", autoRemove: Bool = true) {
+    public static func showInfo(infoText: String = "info!", autoRemove: Bool = true) {
         SJProgressHUD.showText(.info, text: infoText, autoRemove: autoRemove)
     }
     /**
      移除HUD,会移除所有
      */
-    static func dismiss() {
+    public static func dismiss() {
         SJProgressHUD.clear()
     }
 }
@@ -95,7 +95,7 @@ private func bgColor(alpha: CGFloat) -> UIColor {
     return UIColor(red: 0, green: 0, blue: 0, alpha: alpha)
 }
 
-class SJProgressHUD : NSObject {
+public class SJProgressHUD : NSObject {
     
     static var windows = Array<UIWindow!>()
     static var angle: Double {
