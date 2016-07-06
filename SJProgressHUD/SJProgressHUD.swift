@@ -141,7 +141,7 @@ public class SJProgressHUD : NSObject {
 
         
         if autoRemove {
-            performSelector("removeHUD:", withObject: window, afterDelay: 3)
+            performSelector(#selector(SJProgressHUD.removeHUD(_:)), withObject: window, afterDelay: 3)
         }
     
     }
@@ -160,7 +160,7 @@ public class SJProgressHUD : NSObject {
         lable.center = window.center
         
         if autoRemove {
-            performSelector("removeHUD:", withObject: window, afterDelay: 3)
+            performSelector(#selector(SJProgressHUD.removeHUD(_:)), withObject: window, afterDelay: 3)
         }
     }
     static private func onlyText(text: String, autoRemove: Bool) {
@@ -183,7 +183,7 @@ public class SJProgressHUD : NSObject {
         let window = SJProgressHUD.createWindow(frame, view: view)
         
         if autoRemove {
-            performSelector("removeHUD:", withObject: window, afterDelay: 3)
+            performSelector(#selector(SJProgressHUD.removeHUD(_:)), withObject: window, afterDelay: 3)
         }
     }
     static private func showText(type: ShowType, text: String, autoRemove: Bool) {
@@ -216,7 +216,7 @@ public class SJProgressHUD : NSObject {
         let window = SJProgressHUD.createWindow(frame, view: view)
         
         if autoRemove {
-            performSelector("removeHUD:", withObject: window, afterDelay: 3)
+            performSelector(#selector(SJProgressHUD.removeHUD(_:)), withObject: window, afterDelay: 3)
         }
         
     }
