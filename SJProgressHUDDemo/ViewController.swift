@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
 
     }
+    
     @IBAction func loadImage(sender: AnyObject) {
         
         var images = Array<UIImage>()
