@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SJProgressHUD"
-  s.version      = "0.0.3"
+  s.version      = "0.1.0"
   s.ios.deployment_target = '8.0'
   s.summary      = "纯swift HUD提示框 使用简单"
   s.homepage     = "https://github.com/king129/SJProgressHUD"

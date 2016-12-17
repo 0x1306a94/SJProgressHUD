@@ -2,8 +2,8 @@
 //  SJProgressHUD.swift
 //  SJProgressHUD
 //
-//  Created by king on 16/4/10.
-//  Copyright © 2016年 king. All rights reserved.
+//  Created by ly on 16/12/16.
+//  Copyright © 2016年 aoke. All rights reserved.
 //
 
 import UIKit
@@ -22,7 +22,7 @@ public extension SJProgressHUD {
      - parameter images:       图片数组
      - parameter timeInterval: 动画每次执行时间
      */
-    public static func showWaitingWithImages(images : Array<UIImage>, timeInterval : NSTimeInterval = 0) {
+    public static func showWaitingWithImages(_ images : Array<UIImage>, timeInterval : TimeInterval = 0) {
         SJProgressHUD.showWaitWithImages(images, timeInterval: timeInterval)
     }
     /**
@@ -31,7 +31,7 @@ public extension SJProgressHUD {
      - parameter text:       需要显示的文字,如果不设置文字,则只显示菊花
      - parameter autoRemove: 是否自动移除,默认3秒后自动移除
      */
-    public static func showWaiting(text: String = "", autoRemove: Bool = true) {
+    public static func showWaiting(_ text: String = "", autoRemove: Bool = true) {
         SJProgressHUD.showWaitingWithText(text, autoRemove: autoRemove)
     }
     /**
@@ -41,7 +41,7 @@ public extension SJProgressHUD {
      - parameter color:      背景颜色
      - parameter autoRemove: 是否自动移除,默认3秒后自动移除
      */
-    public static func showStatusBarWithText(text: String = "OK", color: UIColor = UIColor(red: 131 / 255.0, green: 178 / 255.0, blue: 158 / 255.0, alpha: 1), autoRemove: Bool = true) {
+    public static func showStatusBarWithText(_ text: String = "OK", color: UIColor = UIColor(red: 131 / 255.0, green: 178 / 255.0, blue: 158 / 255.0, alpha: 1), autoRemove: Bool = true) {
         SJProgressHUD.showStatusBar(text, color: color, autoRemove: autoRemove)
     }
     /**
@@ -50,7 +50,7 @@ public extension SJProgressHUD {
      - parameter text:       需要显示的文字
      - parameter autoRemove: 是否自动移除,默认3秒后自动移除
      */
-    public static func showOnlyText(text: String, autoRemove: Bool = true) {
+    public static func showOnlyText(_ text: String, autoRemove: Bool = true) {
         SJProgressHUD.onlyText(text, autoRemove: autoRemove)
     }
     /**
@@ -59,7 +59,7 @@ public extension SJProgressHUD {
      - parameter successText: 需要显示的文字,默认为 Success!
      - parameter autoRemove:  是否自动移除,默认3秒后自动移除
      */
-    public static func showSuccess(successText: String = "Success!", autoRemove: Bool = true) {
+    public static func showSuccess(_ successText: String = "Success!", autoRemove: Bool = true) {
         SJProgressHUD.showText(.success, text: successText, autoRemove: autoRemove)
     }
     /**
@@ -68,7 +68,7 @@ public extension SJProgressHUD {
      - parameter errorText:  需要显示的文字,默认为 Error!
      - parameter autoRemove: 是否自动移除,默认3秒后自动移除
      */
-    public static func showError(errorText: String = "Error!", autoRemove: Bool = true) {
+    public static func showError(_ errorText: String = "Error!", autoRemove: Bool = true) {
         SJProgressHUD.showText(.error, text: errorText, autoRemove: autoRemove)
     }
     /**
@@ -77,7 +77,7 @@ public extension SJProgressHUD {
      - parameter infoText:   需要显示的文字,默认为 Info!
      - parameter autoRemove: 是否自动移除,默认3秒后自动移除
      */
-    public static func showInfo(infoText: String = "info!", autoRemove: Bool = true) {
+    public static func showInfo(_ infoText: String = "info!", autoRemove: Bool = true) {
         SJProgressHUD.showText(.info, text: infoText, autoRemove: autoRemove)
     }
     /**
@@ -91,39 +91,39 @@ public extension SJProgressHUD {
 
 private let circleSize = CGSize(width: 40, height: 40)
 private let windowBgColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.002)
-private func bgColor(alpha: CGFloat) -> UIColor {
+private func bgColor(_ alpha: CGFloat) -> UIColor {
     return UIColor(red: 0, green: 0, blue: 0, alpha: alpha)
 }
 
-public class SJProgressHUD : NSObject {
+open class SJProgressHUD : NSObject {
     
     static var windows = Array<UIWindow!>()
     static var angle: Double {
-            return [0, 0, 180, 270, 90][UIApplication.sharedApplication().statusBarOrientation.hashValue] as Double
+        return [0, 0, 180, 270, 90][UIApplication.shared.statusBarOrientation.hashValue] as Double
     }
-    static private func showWaitWithImages(images : Array<UIImage>, timeInterval : NSTimeInterval) {
+    static open func showWaitWithImages(_ images : Array<UIImage>, timeInterval : TimeInterval) {
         
         let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         let imageView = UIImageView()
         imageView.frame = frame
-        imageView.contentMode = .ScaleAspectFit
+        imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = bgColor(0.7)
         imageView.layer.cornerRadius = 10
         imageView.animationImages = images
-        imageView.animationDuration = timeInterval == 0 ? NSTimeInterval(images.count) * 0.07 : timeInterval
+        imageView.animationDuration = timeInterval == 0 ? TimeInterval(images.count) * 0.07 : timeInterval
         imageView.animationRepeatCount = 0
         imageView.startAnimating()
         
         _ = SJProgressHUD.createWindow(frame, view: imageView)
-
+        
     }
-    static private func showWaitingWithText(text: String, autoRemove: Bool) {
+    static open func showWaitingWithText(_ text: String, autoRemove: Bool) {
         
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         view.backgroundColor = bgColor(0.7)
         view.layer.cornerRadius = 10
         
-        let activity = UIActivityIndicatorView(activityIndicatorStyle: .White)
+        let activity = UIActivityIndicatorView(activityIndicatorStyle: .white)
         if !text.isEmpty {
             activity.frame = CGRect(x: 35, y: 25, width: 30, height: 30)
             
@@ -138,16 +138,17 @@ public class SJProgressHUD : NSObject {
         
         
         let window = SJProgressHUD.createWindow(view.frame, view: view)
-
+        
         
         if autoRemove {
-            performSelector(#selector(SJProgressHUD.removeHUD(_:)), withObject: window, afterDelay: 3)
+            let sel = #selector(removeHUD(_:))
+            perform(sel, with: window, afterDelay: 3)
         }
-    
-    }
-    static private func showStatusBar(text: String, color: UIColor, autoRemove: Bool) {
         
-        let frame = UIApplication.sharedApplication().statusBarFrame
+    }
+    static open func showStatusBar(_ text: String, color: UIColor, autoRemove: Bool) {
+        
+        let frame = UIApplication.shared.statusBarFrame
         
         let lable = SJProgressHUD.createLable()
         lable.text = text
@@ -160,10 +161,11 @@ public class SJProgressHUD : NSObject {
         lable.center = window.center
         
         if autoRemove {
-            performSelector(#selector(SJProgressHUD.removeHUD(_:)), withObject: window, afterDelay: 3)
+            let sel = #selector(removeHUD(_:))
+            perform(sel, with: window, afterDelay: 3)
         }
     }
-    static private func onlyText(text: String, autoRemove: Bool) {
+    static open func onlyText(_ text: String, autoRemove: Bool) {
         
         let view = UIView()
         view.backgroundColor = bgColor(0.7)
@@ -172,23 +174,24 @@ public class SJProgressHUD : NSObject {
         
         let label = SJProgressHUD.createLable()
         label.text = text
-        label.font = UIFont.systemFontOfSize(12)
+        label.font = UIFont.systemFont(ofSize: 12)
         label.frame = CGRect(x: 0, y: 0, width: 200, height: 100)
         view.addSubview(label)
         
-        let frame = CGRectMake(0, 0, 210 , 110)
+        let frame = CGRect(x: 0, y: 0, width: 210, height: 110)
         view.frame = frame
         label.center = view.center
- 
+        
         let window = SJProgressHUD.createWindow(frame, view: view)
         
         if autoRemove {
-            performSelector(#selector(SJProgressHUD.removeHUD(_:)), withObject: window, afterDelay: 3)
+            let sel = #selector(removeHUD(_:))
+            perform(sel, with: window, afterDelay: 3)
         }
     }
-    static private func showText(type: ShowType, text: String, autoRemove: Bool) {
+    static open func showText(_ type: ShowType, text: String, autoRemove: Bool) {
         let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-       
+        
         let view = UIView(frame: frame)
         view.layer.cornerRadius = 10
         view.backgroundColor = bgColor(0.7)
@@ -205,7 +208,7 @@ public class SJProgressHUD : NSObject {
         
         let imageView = UIImageView(image: image)
         imageView.frame = CGRect(origin: CGPoint(x: 30, y: 25), size: circleSize)
-        imageView.contentMode = .ScaleAspectFit
+        imageView.contentMode = .scaleAspectFit
         view.addSubview(imageView)
         
         let lable = SJProgressHUD.createLable()
@@ -216,52 +219,53 @@ public class SJProgressHUD : NSObject {
         let window = SJProgressHUD.createWindow(frame, view: view)
         
         if autoRemove {
-            performSelector(#selector(SJProgressHUD.removeHUD(_:)), withObject: window, afterDelay: 3)
+            let sel = #selector(removeHUD(_:))
+            perform(sel, with: window, afterDelay: 3)
         }
         
     }
     
-    static private func createLable() -> UILabel {
+    static fileprivate func createLable() -> UILabel {
         let lable = UILabel()
-        lable.font = UIFont.systemFontOfSize(10)
-        lable.backgroundColor = UIColor.clearColor()
-        lable.textColor = UIColor.whiteColor()
+        lable.font = UIFont.systemFont(ofSize: 10)
+        lable.backgroundColor = UIColor.clear
+        lable.textColor = UIColor.white
         lable.numberOfLines = 0
-        lable.textAlignment = .Center
+        lable.textAlignment = .center
         return lable
     }
-    static private func createWindow(frame: CGRect, view: UIView) -> UIWindow {
+    static fileprivate func createWindow(_ frame: CGRect, view: UIView) -> UIWindow {
         
         let window = UIWindow(frame: frame)
         window.backgroundColor = windowBgColor
         window.windowLevel = UIWindowLevelAlert
-        window.transform = CGAffineTransformMakeRotation(CGFloat(angle * M_PI / 180))
-        window.hidden = false
+        window.transform = CGAffineTransform(rotationAngle: CGFloat(angle * M_PI / 180))
+        window.isHidden = false
         window.center = getCenter()
         window.addSubview(view)
         windows.append(window)
         return window
     }
-    @objc static private func removeHUD(object: AnyObject) {
+    @objc static open func removeHUD(_ object: AnyObject) {
         if let window = object as? UIWindow {
-            if let index = windows.indexOf({ (item) -> Bool in
+            if let index = windows.index(where: { (item) -> Bool in
                 return item == window
             }) {
-                windows.removeAtIndex(index)
+                windows.remove(at: index)
             }
         }
     }
-    static private func clear() {
+    static open func clear() {
         if windows.isEmpty { return }
-        self.cancelPreviousPerformRequestsWithTarget(self)
-         windows.removeAll(keepCapacity: false)
+        self.cancelPreviousPerformRequests(withTarget: self)
+        windows.removeAll(keepingCapacity: false)
     }
     static func getCenter() -> CGPoint {
-        let view = UIApplication.sharedApplication().keyWindow?.subviews.first as UIView!
-        if UIApplication.sharedApplication().statusBarOrientation.hashValue >= 3 {
-            return CGPoint(x: view.center.y, y: view.center.x)
+        let view = UIApplication.shared.keyWindow?.subviews.first as UIView!
+        if UIApplication.shared.statusBarOrientation.hashValue >= 3 {
+            return CGPoint(x: view!.center.y, y: view!.center.x)
         } else {
-            return view.center
+            return view!.center
         }
     }
 }
@@ -275,42 +279,42 @@ class drawImage  {
         static var imageOfInfo: UIImage?
     }
     
-    class func draw(type : ShowType) {
+    class func draw(_ type : ShowType) {
         
         let path = UIBezierPath()
         
-        path.moveToPoint(CGPoint(x: 40, y: 20))
-        path.addArcWithCenter(CGPoint(x: 20, y: 20), radius: 19, startAngle: 0, endAngle: CGFloat(M_PI*2), clockwise: true)
-        path.closePath()
+        path.move(to: CGPoint(x: 40, y: 20))
+        path.addArc(withCenter: CGPoint(x: 20, y: 20), radius: 19, startAngle: 0, endAngle: CGFloat(M_PI*2), clockwise: true)
+        path.close()
         
         switch type {
         case .success:
-            path.moveToPoint(CGPoint(x: 15, y: 20))
-            path.addLineToPoint(CGPoint(x: 20, y: 25))
-            path.addLineToPoint(CGPoint(x: 30, y: 15))
-            path.moveToPoint(CGPoint(x: 15, y: 20))
-            path.closePath()
+            path.move(to: CGPoint(x: 15, y: 20))
+            path.addLine(to: CGPoint(x: 20, y: 25))
+            path.addLine(to: CGPoint(x: 30, y: 15))
+            path.move(to: CGPoint(x: 15, y: 20))
+            path.close()
         case .error:
-            path.moveToPoint(CGPoint(x: 10, y: 10))
-            path.addLineToPoint(CGPoint(x: 30, y: 30))
-            path.moveToPoint(CGPoint(x: 10, y: 30))
-            path.addLineToPoint(CGPoint(x: 30, y: 10))
-            path.moveToPoint(CGPoint(x: 10, y: 10))
-            path.closePath()
+            path.move(to: CGPoint(x: 10, y: 10))
+            path.addLine(to: CGPoint(x: 30, y: 30))
+            path.move(to: CGPoint(x: 10, y: 30))
+            path.addLine(to: CGPoint(x: 30, y: 10))
+            path.move(to: CGPoint(x: 10, y: 10))
+            path.close()
         case .info:
-            path.moveToPoint(CGPoint(x: 20, y: 8))
-            path.addLineToPoint(CGPoint(x: 20, y: 28))
-            path.moveToPoint(CGPoint(x: 20, y: 8))
-            path.closePath()
+            path.move(to: CGPoint(x: 20, y: 8))
+            path.addLine(to: CGPoint(x: 20, y: 28))
+            path.move(to: CGPoint(x: 20, y: 8))
+            path.close()
             
             let tmpPath = UIBezierPath()
-            tmpPath.moveToPoint(CGPoint(x: 20, y: 30))
-            tmpPath.addArcWithCenter(CGPoint(x: 20, y: 30), radius: 1, startAngle: 0, endAngle: CGFloat(M_PI*2), clockwise: true)
-            tmpPath.closePath()
-            UIColor.whiteColor().setFill()
+            tmpPath.move(to: CGPoint(x: 20, y: 30))
+            tmpPath.addArc(withCenter: CGPoint(x: 20, y: 30), radius: 1, startAngle: 0, endAngle: CGFloat(M_PI*2), clockwise: true)
+            tmpPath.close()
+            UIColor.white.setFill()
             tmpPath.fill()
         }
-        UIColor.whiteColor().setStroke()
+        UIColor.white.setStroke()
         path.stroke()
     }
     
